@@ -1,0 +1,41 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Postman Collection Workflow
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  postman-tests:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout the postman collection
+      - uses: actions/checkout@v4
+
+      # Setup the NODEJS Environment for the github runner
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: '20.9.0'
+
+      # NEWMAN AND HTML EXTRA INSTALLATION
+      - name: Install Newman and HTML EXTRA
+        run: npm install -g newman newman-reporter-htmlextra
+
+      # Execute Postman collection
+      - name: Execute Postman Collection
+        run: newman run Inwarranty\ QC\ Accept.postman_collection.json -e QA.postman_environment.json -r cli,htmlextra
+
+        
+        
