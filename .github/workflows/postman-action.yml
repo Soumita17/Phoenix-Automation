@@ -21,7 +21,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout the postman collection
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       # Setup the NODEJS Environment for the github runner
       - name: Setup Node.js
@@ -37,5 +37,10 @@ jobs:
       - name: Execute Postman Collection
         run: newman run Inwarranty\ QC\ Accept.postman_collection.json -e QA.postman_environment.json -r cli,htmlextra
 
+      - name: Archieve the HTML Report
+        uses: actions/upload-artifact@v4.3.6
+        with:
+          name: POSTMAN TEST REPORTS
+          path: newman/*.html
         
         
