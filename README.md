@@ -1,6 +1,6 @@
-Phoenix Automation for InWarranty QC Accept using Postman
+## Phoenix Automation for InWarranty QC Accept using Postman
 
-API endpoint: GET http://phoenix.techwithjatin.com
+## API endpoint: GET http://phoenix.techwithjatin.com
 
 **Author**: Soumita
 
