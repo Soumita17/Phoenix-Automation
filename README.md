@@ -12,7 +12,7 @@ Phoenix Automation is a collection of Postman API requests used for testing the 
 1. Postman API
 2. Node.js
 3. Newman
-4. Gitbas
+4. Gitbash
    
 ## Prerequisites
 
